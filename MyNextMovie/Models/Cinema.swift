@@ -4,6 +4,8 @@ import Foundation
 // Lab 6: the data types of the Cinemas tab are ready.
 // Write the other constants and the functions from task 1 in this file.
 
+
+
 /// Distance of a cinema before the app knows where the user is.
 nonisolated let unknownDistance: CLLocationDistance = -1
 

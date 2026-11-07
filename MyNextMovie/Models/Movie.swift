@@ -32,28 +32,42 @@ func releaseYear(_ movie: Movie) -> String {
     // TODO: Lab 1, task 1. Return the first `releaseYearLength` characters of
     // `movie.releaseDate`, or "" when the date is shorter than that.
     // Hint: `String(text.prefix(count))`.
-    return ""
+    guard movie.releaseDate.count >= releaseYearLength else {
+        return ""
+    }
+    return String(movie.releaseDate.prefix(releaseYearLength))
 }
+
+
+
+
 
 /// 8.24 -> "8.2"
 func formattedRating(_ movie: Movie) -> String {
     // TODO: Lab 1, task 1. Format `movie.voteAverage` with `ratingFormat`.
     // Hint: `String(format: ratingFormat, number)`.
-    return ""
+//    return ""
+    return String(format: ratingFormat, movie.voteAverage)
 }
+
 
 /// 8.24 -> "★ 8.2"
 func ratingWithStar(_ movie: Movie) -> String {
     // TODO: Lab 1, task 2. `ratingStar`, a space, then `formattedRating(movie)`.
-    return ""
+//    return ""
+    return ratingStar + " " + formattedRating(movie)
 }
+
 
 /// "2014 · ★ 8.4", or "★ 8.4" when the release date is unknown.
 func yearAndRating(_ movie: Movie) -> String {
     // TODO: Lab 1, task 2. Join `releaseYear(movie)` and `ratingWithStar(movie)`
     // with `textSeparator`. Leave the year and the separator out when the year is "".
-    return ""
+//    return ""
+    let parts = [releaseYear(movie), ratingWithStar(movie)]
+    return parts.filter { !$0.isEmpty }.joined(separator: textSeparator)
 }
+
 
 /// Poster address on the TMDB image server, nil when the movie has no poster.
 func posterURL(_ movie: Movie) -> URL? {
